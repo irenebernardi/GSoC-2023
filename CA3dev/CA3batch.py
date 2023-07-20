@@ -21,12 +21,23 @@ def batchWeight():
 
         
         # Set output folder, grid method (all param combinations), and run configuration
+        ''' 
         b.batchLabel = 'batchWeight'
         b.saveFolder = 'ca3_data'
         b.method = 'grid'
         b.runCfg = {'type': 'mpi_bulletin',
                                 'script': 'init.py',
                                 'skip': True}
+        '''
+        #for SGE cluster:
+        b.batchLabel = 'tauWeight'
+        b.saveFolder = 'tut8_data'
+        b.method = 'grid'
+        b.runCfg = {'type': 'hpc_sge',
+                    'cores': 4,
+                    'script': 'init.py',
+                    'pre': 'tree',
+                    'skip': True}
 
         # Run batch simulations
         b.run()
