@@ -1,0 +1,29 @@
+# Site settings
+title: My GSoC contributor journey
+description: All of the updates on my GSoC learning progress
+url: https://irenebernardi.github.io     # Update this with your GitHub Pages URL
+baseurl: ""                             # Leave this empty for GitHub Pages
+
+# Theme settings
+remote_theme: pages-themes/hacker@v0.2.0           # Change this to the theme you want to use
+                                      # You can explore other themes at https://jekyllthemes.io/
+
+# Markdown settings
+markdown: kramdown                     # Use kramdown as the default Markdown engine
+
+# Exclude files/folders from the build (optional)
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+
+# GitHub Pages settings
+github_pages:
+  jekyll_version: 3.9.0                # Set the version of Jekyll you want to use
+
+# Build settings
+plugins:
+  - jekyll-feed                        # Enable the Jekyll feed plugin (optional, for blog-like websites)
+
+# Additional site-specific settings or customizations can be added here
+# For example, you can define variables, enable other plugins, etc.
