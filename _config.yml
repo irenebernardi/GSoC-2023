@@ -23,10 +23,20 @@ exclude:
 # GitHub Pages settings
 github_pages:
   jekyll_version: 3.9.0                # Set the version of Jekyll you want to use
+            
 
-# Build settings
+
 plugins:
-  - jekyll-feed                        # Enable the Jekyll feed plugin (optional, for blog-like websites)
-
-# Additional site-specific settings or customizations can be added here
-# For example, you can define variables, enable other plugins, etc.
+  - jekyll-relative-links
+relative_links:
+  enabled: true
+  collections: true
+include:
+  - CONTRIBUTING.md
+  - README.md
+  - LICENSE.md
+  - COPYING.md
+  - CODE_OF_CONDUCT.md
+  - CONTRIBUTING.md
+  - ISSUE_TEMPLATE.md
+  - PULL_REQUEST_TEMPLATE.md
