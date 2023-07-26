@@ -5,7 +5,7 @@ url: https://irenebernardi.github.io     # Update this with your GitHub Pages UR
 baseurl: ""                             # Leave this empty for GitHub Pages
 
 # Theme settings
-remote_theme: pages-themes/hacker@v0.2.0           # Change this to the theme you want to use
+theme: pages-themes/hacker@v0.2.0           # Change this to the theme you want to use
                                       # You can explore other themes at https://jekyllthemes.io/
 
 # Markdown settings
