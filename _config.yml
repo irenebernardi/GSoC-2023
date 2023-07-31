@@ -1,18 +1,17 @@
 # Site settings
-title: My GSoC contributor journey
+title: My GSoC Contributor Journey
 description: All of the updates on my GSoC learning progress
-url: https://irenebernardi.github.io     # Update this with your GitHub Pages URL
-baseurl: ""                             # Leave this empty for GitHub Pages
+url: https://irenebernardi.github.io
+baseurl: "" # Leave this empty for GitHub Pages
 
 # Theme settings
 theme: minima
 plugins:
-- jekyll-remote-theme # add this line to the plugins list if you already have one
-  
-                                      # You can explore other themes at https://jekyllthemes.io/
+  - jekyll-remote-theme # add this line to the plugins list if you already have one
+  - jekyll-relative-links
 
 # Markdown settings
-markdown: kramdown                     # Use kramdown as the default Markdown engine
+markdown: kramdown # Use kramdown as the default Markdown engine
 
 # Exclude files/folders from the build (optional)
 exclude:
@@ -22,21 +21,5 @@ exclude:
 
 # GitHub Pages settings
 github_pages:
-  jekyll_version: 3.9.0                # Set the version of Jekyll you want to use
-            
+  jekyll_version: 3.9.0 # Set the version of Jekyll you want to use
 
-
-plugins:
-  - jekyll-relative-links
-relative_links:
-  enabled: true
-  collections: true
-include:
-  - CONTRIBUTING.md
-  - README.md
-  - LICENSE.md
-  - COPYING.md
-  - CODE_OF_CONDUCT.md
-  - CONTRIBUTING.md
-  - ISSUE_TEMPLATE.md
-  - PULL_REQUEST_TEMPLATE.md
