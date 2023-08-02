@@ -217,7 +217,7 @@ cfg.tune = {}
 # Set the baseline model parameters (remove this to use custom parameters)
 #------------------------------------------------------------------------------
 import json
-filename = '../data/v34_batch25/trial_2142/trial_2142_cfg.json'
+filename = '/Users/irenebernardi/Desktop/localrepos/GSoC2023/A1dev/data/v34_batch25/trial_2142/trial_2142_cfg.json'
 
 with open(filename, 'rb') as f:
     cfgLoad = json.load(f)['simConfig']
