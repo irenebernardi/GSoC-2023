@@ -2,7 +2,7 @@
 
 #$ -N test
 #$ -cwd
-#$ -pe smp 30
+#$ -pe smp 1
 #$ -l h_vmem=128G
 
 # see the submission script
