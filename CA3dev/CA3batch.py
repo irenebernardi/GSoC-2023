@@ -30,11 +30,11 @@ def batchWeight():
                                 'skip': True}
         '''
         #for SGE cluster:
-        b.batchLabel = 'tauWeight'
-        b.saveFolder = 'tut8_data'
+        b.batchLabel = 'batchWeight'
+        b.saveFolder = 'ca3_data'
         b.method = 'grid'
-        b.runCfg = {'type': 'hpc_sge',
-                    'cores': 4,
+        b.runCfg = {'type': 'mpi_bulletin',
+                    'cores': 5,
                     'script': 'init.py',
                     'pre': 'tree',
                     'skip': True}
