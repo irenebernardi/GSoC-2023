@@ -1,6 +1,6 @@
 # [A1 Batch.py](https://github.com/NathanKlineInstitute/Macaque_auditory_thalamocortical_model_data/blob/main/model/batch.py) description 
 
-TODO: translate italian 
+There may be some untranslated italian notes here and there, if you need help reach out @irenebernardi22@gmail.com
 
 **Purpose of batch:** 
 By running the batch simulation multiple times with different parameter values, you can analyze the results and observe how the model's behavior varies across different parameter settings. This way we find insights into the sensitivity of the model to specific parameters and help understand how different factors influence the simulation outcomes.
@@ -53,9 +53,9 @@ starting from:
     - **`params['singlePop'] = pops`**
     This assignes the value of the `pops` argument to the `singlePop` key in the `params` dictionary che abbiamo appena creato.
     - `params['weightBkg'] = weights` 
-    This assigns the value of the `weights` argument to the `weightBkg` key in the `params` dictionary. Consideriamo i valori da 0 a 49 inclusive.
+    This assigns the value of the `weights` argument to the `weightBkg` key in the `params` dictionary. 
     
-    Stai semplicemente dando dei nuovi nomi a queste due keys del dizionario, to make it more readable
+
     
 
 ---
@@ -64,7 +64,7 @@ starting from:
 
 `initCfg = {}`
 
-- dizionario degli initial configuration parameters, che stiamo per specificare:
+- we now defiine these initial configuration parameters:
 
 **# sim and recording params**
 
@@ -106,7 +106,7 @@ initCfg[('rateBkg', 'inh')] = 40
 
 **#Turn off components not required** 
 
-stiamo sempre dando valori alle keys dell’`initconfig` dict.
+you're still setting up values for the keys dell’`initconfig` dict.
 
 ```python
     initCfg['addBkgConn'] = True 
@@ -142,10 +142,10 @@ b = Batch(params=params, netParamsFile='netParams_bkg.py', cfgFile='cfg_cell.py'
 
 - creates a batch object named b. 
 The Batch object is initialized with the following arguments:
-    - params : dict previously defined, w various params for batch sim → parametri da esplorare nella batch simulation
-    - netparamsFile  → specifies file name of the network parameters configuration file associated con la simulazione.
+    - params : dict previously defined, w various params for batch sim
+    - netparamsFile  → specifies file name of the network parameters configuration file associated with the simulation.
     - cfgFile → specifies file name (**`'cfg_cell.py'`**)that contains the configuration settings for the simulation
-    - initCfg → dict che abbiamo già creato, adds additional configuration parameters for the simulation
+    - initCfg →  adds additional configuration parameters for the simulation
 
 `b.method = ‘grid’` 
 
@@ -169,7 +169,7 @@ of the network.
 def weightNorm(pops=[], rule = None, segs = None, allSegs = True, weights=list(np.arange(0.01, 0.2, 0.01)/100.0)):
 ```
 
-The weightNorm function above takes the following arguments (ovvero questa funzione si applica a tali parametri): 
+The weightNorm function above takes the following arguments:
 
 1. **`pops=[]`**
 Empty list specifying the pops to which weight norm should be applied to → as is empty, weightnorm is applied to all pops
@@ -186,7 +186,7 @@ a boolean flag that determines whether the weight normalization should be applie
 `from cfg_cell import cfg
 from netParams_cell import netParams`
 
-- By importing these objects, the code gains access to the pre-defined configuration settings and network parameters specified in the respective files → questo fondamnentale sennò batch non va
+- By importing these objects, the code gains access to the pre-defined configuration settings and network parameters specified in the respective files 
 - These imported objects are then used in conjunction with the **`Batch`** class and other code in **`batch.py`** to define and execute batch simulations.
 
 ```python
@@ -207,7 +207,7 @@ excludeSegs = ['axon']
 ```
 
 - `excludeSegs` is defined as a list containing the areas to exclude (axon)
-- `if not segs :`  vuol dire che CONTROLLA se segs argument è vuoto, SE IT EVALUATES TO FALSE. Se è vuoto,  si prendono due azioni: 
+- `if not segs :`  checks if segs arg is empty, if so it evaluates to false. If empty, two things are done:
 - secs = [] → empty list that will store the segments where weight normalization will be applied
 - locs = [] → empty list storing the location of these segments
 - `for secName, sec in netParams.cellParams[rule]['secs'].items():`
@@ -217,9 +217,8 @@ excludeSegs = ['axon']
     - By using this loop, you can access the section names and their respective parameters defined in **`netParams.cellParams[rule]['secs']`**. This allows you to iterate over the sections and perform actions based on their properties or use them in further calculations or manipulations within the weight normalization process.
 - `if secName not in excludeSegs:`
 it checks if the **`secName`** is not in the **`excludeSegs`** list. If it's not excluded, the code proceeds with the following actions.
-Se invece secName is in excludeSegs → semplicemente viene esclusa
+
 - `if allSegs:`
-Questa in realtà vuol dire -> if `allSegs` is true
 allSegs is a Boolean determining whether weight normalization is applied to all segments or only a single location.
 - `nseg = sec['geom']['nseg']`
 nseg vuol dire number of segments. 
@@ -315,7 +314,7 @@ initCfg = {}
     #first spike starts at 701ms
 ```
 
-**weight factor**: quanta influenza o forza sul network ha ciascuna sinapsi. Non è che va diviso fra le due sinapsi, semplicemente la netstim è eccitatoria e si divide in AMPA e NMDA; inoltre entrambe hanno 0.5 il che vuol dire che hanno an equal, moderate impact on the network activity during the stimulation.
+**weight factor**: how much influence each synapse has on the network. It's not a value that's divided between the two synapses. Exc netsim is AMPA e NMDA; both are set to 0.5 so both have an equal, moderate impact on the network activity during the stimulation.
 
 ```python
 b = Batch(params=params, netParamsFile='netParams_cell.py', cfgFile='cfg_cell.py', initCfg=initCfg, groupedParams=groupedParams)
@@ -659,7 +658,7 @@ gain: increasing the gain value for a specific connection will amplify the stren
 nota qui: 
 
 1. The **`params`** dictionary now includes ranges for various parameters related to background inputs (**`EEGain`** and **`EIGain`**), layer-specific gains for inhibitory neurons (**`IELayerGain`** and **`IILayerGain`**), thalamo-cortical gain (**`thalamoCorticalGain`**), intra-thalamic gain (**`intraThalamicGain`**), and cortico-thalamic gain (**`corticoThalamicGain`**).
-2. The **`groupedParams`** list is empty, indicating that the parameters are not grouped together for this batch simulation. → penso voglia dire che non vogliamo modularli insieme
+2. The **`groupedParams`** list is empty, indicating that the parameters are not grouped together for this batch simulation
 3. The **`saveCellSecs`** and **`saveCellConns`** are set to **`False`**, indicating that individual cell sections and cell connections are not saved during the simulation.
 
 **Fitness function  → defining which value we want**
@@ -738,10 +737,10 @@ TCM' → Thalamocortical modulatory cells
 
 - **`pops`** is a dictionary that defines the target rates and fitness parameters for different neuron populations. For excitatory populations (**`Epops`**), the target rate (**`target`**), width of the fitness function (**`width`**), and minimum rate threshold (**`min`**) are specified. Similarly, for inhibitory populations (**`Ipops`**), corresponding target rates and fitness parameters are defined.
 - **`fitnessFuncArgs`** is a dictionary that holds the arguments for the fitness function. It includes the **`pops`** dictionary, a maximum fitness value (**`maxFitness`**), and the time ranges (**`tranges`**) for which the fitness will be evaluated.
-- `fitnessFuncArgs['maxFitness'] = 1000`   questo è un valore che usi poi to compare different batch sims, per vedere how close each one is to the desired value → 1000 è il valore dato alle popolazioni che underperform
+- `fitnessFuncArgs['maxFitness'] = 1000`   value used to then compare different batch sims and check how close each one is to the desired value → 1000 is the value given to underperforming pops
 - **`fitnessFunc`** is the actual fitness function that takes the simulation data and the **`kwargs`** dictionary as input. It calculates the fitness based on the provided arguments. The function iterates over the time ranges (**`tranges`**) and calculates the fitness for each population based on the difference between the simulated rates and the target rates. The fitness is calculated as the mean of the fitness values for all populations.
 
-nello specifico (ricordati che k è la popolazione): 
+k is the pop:
 
 ```python
 #qui calcoliamo fitnessvalue of firing rate per ogni popolazione
@@ -762,7 +761,7 @@ The purpose of taking the minimum value in this context is to prevent extremely 
 
 You defined VMIN in Etune/Itune!
 
-Lower fitness value here is considered better il che ha senso in termini di numeri → infatti maximize is set to false!!!
+Lower fitness value here is considered better -> maximize is set to false!!!
 
 ```python
 #from IPython import embed; embed()
@@ -798,7 +797,7 @@ Lower fitness value here is considered better il che ha senso in termini di nume
 
 ### Adaptive Stochastic Descent (ASD)
 
-What i found online but conferma che sia pertinent: 
+
 → ASD is used when standard optimization methods fail to find a satisfactory solution for parameter fitting. 
 
 → algorithm that replicates essential aspects of manual parameter fitting in an automated way. 
@@ -967,16 +966,16 @@ In summary, the **`asdRates()`** function sets up a **`Batch`** object for perfo
 
 By combining ASD with Optuna, the **`optunaRates`** function takes advantage of the exploratory power of ASD to quickly search the parameter space and identify promising regions.
 
-HPO cerca automaticamente i valori migliori dei parametri in un ML model. 
-Hyperparameters → settings che non sono imparati from the data, they’re set before the training process begins (e.g. number of layers).
+HPO automatically looks for best values of an ML model parameters.
+Hyperparameters → not learned from the data, they’re set before the training process begins (e.g. number of layers).
 
 Optuna picks which sets of hyperparameters to try next based on the results of previous trials.
 
-→ l’obiettivo qui è trovare valore per questi hyperparameters che risultino in simulated firing rates that closely match the target rates specified in the opt. process. 
+→ obj is finding those hyperparameters resulting in simulated firing rates that closely match the target rates specified in the opt. process. 
 
 Optuna performs automated search for optimal parameter values → saves time w respect to manual tuning (ASD) or grid methods.
 
-Cosa cambia: 
+What's different:
 
 - define a function called **`optunaRates()`** that creates a **`Batch`** object for performing optimization using the Optuna library. The purpose of this function is to optimize the parameters of a neural network model based on a fitness function.
 
@@ -1112,7 +1111,7 @@ def optunaRates():
 
 **Optuna optimization w/optunaRatesLayers**
 
-Quindi qui abbiamo layer-related hyperparameters.
+ layer-related hyperparameters.
 
 ```python
 def optunaRatesLayers():
@@ -1604,11 +1603,11 @@ updateParams2 = ['thalamoCorticalGain', 'intraThalamicGain', 'EbkgThalamicGain',
     #con questi nuovi parametri aggiunti
 ```
 
-**FONDAMENTALE** → ogni volta che you update initCfg, usando the items of the list `updateParams`, the value of each p in updateParams is stored in the `cfgLoad` dictionary, using the parameter names as keys.
+**important** → everytime you update initCfg, using items of the list `updateParams`, the value of each p in updateParams is stored in the `cfgLoad` dictionary, using the parameter names as keys.
 
 **THE DATA THAT IS LOADED FROM THE JSON FILE IS THEN STORED IN THE CFGLOAD VARIABLE!!!**
 
-poi fitness function, creating batch object: 
+fitness function, creating batch object: 
 
 ```python
 # fitness function
