@@ -1,6 +1,5 @@
 # [A1 cfg.py](https://github.com/NathanKlineInstitute/Macaque_auditory_thalamocortical_model_data/blob/main/model/cfg.py) description 
 
-TODO: translate from italian
 
 ### Run Parameters
 
@@ -20,7 +19,7 @@ TODO: translate from italian
 
 - time step size is represented by ‘dt’
 - time step is set to 0.05 ms
-- the smaller the time step, the more accurate is the ability of the simulation to capture changes over time. Questo però a discapito del computational load
+- the smaller the time step, the more accurate is the ability of the simulation to capture changes over time. This however is at the expense of computational load
 - **`cfg.dt`** to 0.05 means that the simulation will look at variations in the network every 0.05 milliseconds.
 
 `cfg.verbose = 0`
@@ -46,7 +45,7 @@ TODO: translate from italian
 **`cfg.createPyStruct = 1`**
 
 - sets the **`createPyStruct`** configuration parameter to 1, so NetPyNE will create a Python data structure to represent the network during the initialization of the simulation.
-- default behavior, if need to manually create objects (non credo), set to 0
+- default behavior, if need to manually create objects, set to 0
 
 `cfg.printRunTime = 0.1`
 
@@ -76,9 +75,9 @@ Caching ion channel densities:
 
 **`cfg.cache_efficient = True`**
 
-- parliamo di caching ion channel densities in the simulation
+- caching ion channel densities in the simulation
 - se **`cache_efficient`** è **`True`**, we use optimized method for caching ion channel densities in the simulation.
-- altrimenti sarebbe computationally costly → Setting **`cache_efficient`** to **`True`** enables an optimized method that is more computationally efficient → memory efficient
+- otherwise computationally costly → Setting **`cache_efficient`** to **`True`** enables an optimized method that is more computationally efficient → memory efficient
 
 `cfg.oneSynPerNetcon = False`
 
@@ -89,7 +88,7 @@ Caching ion channel densities:
 
 `cfg.includeParamsLabel = False`
 
-- ricorda: the cfg object is used to specify various simulation configuration parameters.
+- remember: the cfg object is used to specify various simulation configuration parameters.
 - `includeParamsLabel` is a parameter which is a Boolean flag → it determines whether or not to include the parameters label in the output files of the simulation.
 - when **`cfg.includeParamsLabel`** is set to **`True`**, the label of each parameter specified in the simulation configuration is included in the output files. 
 This can be useful for identifying the values of specific parameters in the simulation results.
@@ -352,7 +351,7 @@ EXAMPLE: if a synapse has a total weight of 0.5, then 0.25 weight is given to AM
 - if set to `True`, weight normalization is turned off
 - if `False` (default), weight normalization is applied
 
-`cfg.scale = 1.0`  @Irene  
+`cfg.scale = 1.0` 
 
 - parameter that scales network size
 - A value of 1.0 means the network is at its original size, and a value greater than 1.0 would increase the network size, while a value less than 1.0 lo diminiusice
@@ -542,7 +541,7 @@ The first line of code is the connections between:
 -a virtual cell representing background input 
 -all other cells in the network 
 
-The second line represents the level of random noise to add to the firing rate of the background input. Quindi agisce sulla virtual cell definita prima. 
+The second line represents the level of random noise to add to the firing rate of the background input. This acts on the virtual cell defined earlier.
 This is important because if the background input is too regular, it can drive the network activity in a way that is not representative of biological neural networks. 
 
 `cfg.delayBkg = 5.0  # (ms)`
@@ -675,4 +674,4 @@ else:
 cfg.**dict**.update({p: cfgLoad[p]})
 ```
 
-Qui vedi che it’s iterating through the **`updateParams`** list and checking each parameter **`p`** in it. If the parameter is a tuple, it uses the first element of the tuple as a key to update a nested dictionary within the **`cfg`** dictionary with the value from the loaded configuration file (**`cfgLoad`**). If the parameter is not a tuple, it updates the **`cfg`** dictionary directly with the value from **`cfgLoad`**. In this way, the **`updateParams`** list allows specific parameters to be updated from a saved configuration file while keeping other parameters fixed at their original values.
+Here you see how it’s iterating through the **`updateParams`** list and checking each parameter **`p`** in it. If the parameter is a tuple, it uses the first element of the tuple as a key to update a nested dictionary within the **`cfg`** dictionary with the value from the loaded configuration file (**`cfgLoad`**). If the parameter is not a tuple, it updates the **`cfg`** dictionary directly with the value from **`cfgLoad`**. In this way, the **`updateParams`** list allows specific parameters to be updated from a saved configuration file while keeping other parameters fixed at their original values.
