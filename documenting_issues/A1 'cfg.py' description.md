@@ -1,5 +1,6 @@
 # [A1 cfg.py](https://github.com/NathanKlineInstitute/Macaque_auditory_thalamocortical_model_data/blob/main/model/cfg.py) description 
 
+There may be some untranslated italian notes here and there, if you need help reach out @irenebernardi22@gmail.com
 
 ### Run Parameters
 
