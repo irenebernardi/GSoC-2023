@@ -2,7 +2,7 @@
 When the script reaches the mpi line: `time mpiexec $ (hostname) -n $NSLOTS nrniv -python -mpi batch.py` it starts a subprocess: a new process from the main process that is the submit script. This is for parallel execution of the python script that is the batch file in this case. All of the jobs that spawn from this are sent to each node.
 The batch run (just `python batch.py`) creates a shell script per se , so an actual shell submission isn’t really necessary but useful to validate that job submission works on Downstate HPC.
 
-Script should look like this:
+Script should look like this: 
 
       #!/bin/bash
 
