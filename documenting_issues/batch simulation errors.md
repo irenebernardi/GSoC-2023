@@ -32,15 +32,9 @@ If not working, substitute  `simulationsim.creatSimulateAnalzye` to `sim.creatSi
         params['delay'] = [2, 4, 6]
         params['loc'] = [0.25, 0.5, 0.75]
         
-        
-     **'cfg.py' should look like this** :
-
-      cfg.connWeight = []
-      cfg.delay = []
-      cfg.loc = []
       
       
-     When I set the values to explore in cfg.py, the simulation ignored them and ran with the values in `params` in `batch.py`.
+     When I set the values to explore in `cfg.py`, the simulation ignored them and ran with the values in `params` in `batch.py`. Therefore the values in      `cfg.py` should match those in `batch.py`: empty lists for the values in `cfg.py` will break `init.py`.
 
      **When running batch.py gives this error:**
   
@@ -55,7 +49,12 @@ If not working, substitute  `simulationsim.creatSimulateAnalzye` to `sim.creatSi
             synLabel=params['synMech'], secLabel=synMechSecs[i], loc=synMechLocs[i], preLoc=params['preLoc']
             IndexError: list index out of range 
 
-Changing init.py paths to the exact paths to netParams.py and cfg.py fixed it.
+The correct mod compilation fixed this (see [here](https://github.com/irenebernardi/GSoC23/blob/main/documenting_issues/order%20of%20batch%20commands.md)). 
+
+
+
+
+Overall, check that cfg.json looks right and run `print(netParams.connParams())`
 
      
 
