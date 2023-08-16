@@ -1,6 +1,6 @@
 # [A1 netParams.py](https://github.com/NathanKlineInstitute/Macaque_auditory_thalamocortical_model_data/blob/main/model/netParams.py) description
 
-# There may be some untranslated italian notes here and there, if you need help reach out @irenebernardi22@gmail.com
+There may be some untranslated italian notes here and there, if you need help reach out @irenebernardi22@gmail.com
 
 difference between cfg.py and netParams.py (taken from tut8) 
 
