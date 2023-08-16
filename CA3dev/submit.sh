@@ -8,6 +8,6 @@
 # see the submission script
 cat $SGE_O_WORKDIR/submit.sh
 
-source /ddn/irenebernardi/.bashrc
-time mpiexec -H localhost -n $NSLOTS nrniv -python -mpi CA3batch.py
+source ~/.bashrc
+time mpiexec $ (hostname) -n $NSLOTS nrniv -python -mpi CA3batch.py
 
