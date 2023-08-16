@@ -1,7 +1,6 @@
 # [A1 netParams.py](https://github.com/NathanKlineInstitute/Macaque_auditory_thalamocortical_model_data/blob/main/model/netParams.py) description
 
-TODO: translate from italian 
-
+# There may be some untranslated italian notes here and there, if you need help reach out @irenebernardi22@gmail.com
 
 difference between cfg.py and netParams.py (taken from tut8) 
 
@@ -231,9 +230,9 @@ if cfg.singleCellPops:
 for pop in netParams.popParams.values(): pop['numCells'] = 1
 ```
 
-- qui praticamente dà per scontato che `cfg.singleCellPops` is set to True ; quindi poi dice:
-- per ogni popolazione in `netParams.popParams`, il valore `numCells` sarà 1
-- infatti setting **`singleCellPops`** to **`True`** means that only one cell will be created for each population defined in the **`netParams.popParams`** dictionary, instead of the default behavior which creates a population of multiple cells with the specified **`size`** parameter. This is useful for simulating small networks with only a few cells or for testing and debugging individual cells.
+- assumes `cfg.singleCellPops` is set to True ; then:
+- for each pop in `netParams.popParams`, value of `numCells` is 1
+-  in fact setting **`singleCellPops`** to **`True`** means that only one cell will be created for each population defined in the **`netParams.popParams`** dictionary, instead of the default behavior which creates a population of multiple cells with the specified **`size`** parameter. This is useful for simulating small networks with only a few cells or for testing and debugging individual cells.
 
 ## List of E and I pops to use later on
 
@@ -296,7 +295,7 @@ names of synaptic mechanisms for each cell type
 
 ### Local connectivity parameters
 
-#load data from conn pre-processing file @irene the file that can’t be found on Spyder
+#load data from conn pre-processing file 
 
 ```python
 with open('conn/conn.pkl', 'rb') as fileObj: connData = pickle.load(fileObj)
@@ -321,13 +320,13 @@ connDataSource = connData['connDataSource']
 
 `layerGainLabels = ['1', '2', '3', '4', '5A', '5B', '6']`
 
-- se ti ricordi questi sono i numeri assegnati a ogni layer che avevamo già stabilito sopra
+- we already established these numbers for each layer above
 
 ---
 
 ### E → E
 
-Come vedi sotto siamo in `Epops`, quindi tutte le pops di excitatory neurons.
+ `Epops`: all pops of excitatory neurons.
 
 ```python
 if cfg.addConn and cfg.EEGain > 0.0:
@@ -350,7 +349,7 @@ netParams.connParams['EE_'+pre+'*'+post+'*'+l] = {
 'sec': 'dend_all'}
 ```
 
-- qui attingiamo dalla connectivity data stored in **`pmat`**, **`lmat`**, and **`wmat`** to add connections between `Epops`.
+- we draw from connectivity data stored in **`pmat`**, **`lmat`**, and **`wmat`** to add connections between `Epops`.
 - For each pair of pre- and post-synaptic populations, the connectivity probability **`pmat[pre][post]`** is multiplied by a layer-dependent factor that depends on the Euclidean distance **`lmat[pre][post]`** between the pre- and post-synaptic cells and a global gain factor **`cfg.EEGain`**. The layer-dependent factor is determined by the **`layerGainLabels`** list, which specifies the layer boundaries.
 - The resulting probability is used to determine the presence or absence of a connection between the two populations, and if a connection is present, it is given a weight specified by **`wmat[pre][post] * cfg.EEGain * cfg.EELayerGain[l]`**. The weight is applied to both AMPA and NMDA receptors (**`ESynMech`**). The synapses are placed on dendritic compartments (**`sec = 'dend_all'`**), and their delay is determined by the distance between the pre- and post-synaptic cells and the conduction velocity of the axon (**`delay': 'defaultDelay+dist_3D/propVelocity'`**).
 
@@ -549,13 +548,13 @@ netParams.connParams['CxTh_'+pre+'_'+post] = {
 
 - **`if post in pmat[pre]`** checks if the target post has a connection probability defined in the pmat matrix for the source pre population.
 - here, the code is checking if a cortical population `pre` has a connection probability to a thalamic population `post`. 
-If the ‘post’ population is not in the ‘pmat’ matrix population, NON VERRANNO CREATI I PARAMETRI.
+If the ‘post’ population is not in the ‘pmat’ matrix population, no parameters are created!
 
 ---
 
 ### Thalamocortical
 
-Qui è come sopra, ma al contrario: 
+Like above but reversed: 
 
 ```python
 if cfg.addConn and cfg.addThalamoCorticalConn:
@@ -606,8 +605,8 @@ netParams.subConnParams['E->E2,3,4'] = {
 - the postsynaptic exc cells in questo caso sono in layer 2,3,4
 - synapses are located in the proximal dendrites and soma
 - density of synapses is uniform across cells
-- `preConds` and `postConds` sono dizionari che ti dicono le condizioni che devono essere sodisfatte dai pre and post synaptic neurons in order for a connection to be formed between them.
-- nota che sec, groupsynmechs e density sono uguali per pre and post
+- `preConds` and `postConds` are dicts establishing conditions that pre and post synaptic neurons must satisfy in order for a connection to be formed between them.
+- nota che sec, groupsynmechs e density are the same for pre and post
 
 **E → E5, 6**
 
@@ -636,7 +635,7 @@ netParams.subConnParams['E->I'] = {
 
 **NGF1 → E : apic_tuft**
 
-Qui nello specifico stiamo stabilendo la connessione fra cellule NGF1 and **apical tuft dendrites of excitatory cells.**
+Establishing connections between NGF1 cells and **apical tuft dendrites of excitatory cells.**
 
 ```python
 netParams.subConnParams['NGF1->E'] = {
@@ -648,8 +647,8 @@ netParams.subConnParams['NGF1->E'] = {
 
 ```
 
-- questa differenza è specificata in sec
-- density uniforme vuol dire che, throughout the section, synapses are uniformly distributed
+- difference specified in sec
+- uniforme density: throughout the section, synapses are uniformly distributed
 
 **NGF2,3,4 -> E2,3,4: apic_trunk**
 
@@ -686,7 +685,7 @@ netParams.subConnParams['NGF5,6->E5,6'] = {
 ```
 
 
-**SOM -> E: all_dend (not close to soma, altrimenti scriveremmo proximal)**
+**SOM -> E: all_dend (not close to soma, would otherwise be proximal)**
 
 ```python
 netParams.subConnParams['SOM->E'] = {
@@ -724,7 +723,7 @@ netParams.subConnParams['TC->E'] = {
 'density': 'uniform'}
 ```
 
-- nello specifico, presynaptic → thalamocortical and hyperpolarization-activated nucleotide-gated cells (HTC), che sonon un sottotipo di thalamocortical cells.
+- presynaptic → thalamocortical and hyperpolarization-activated nucleotide-gated cells (HTC), a subtype of thalamocortical cells.
 
 **TCM -> E: apical**
 
@@ -940,7 +939,7 @@ params = getattr(cfg, key, None)
 ```
 
 - if boolean true, code loops through all attributes of `cfg` that start with string `NetStim` and puts them in a dictionary called `params`.
-- la linea sotto is basically unpacking the dict to obtain variables for **`pop`**, **`ynorm`**, **`sec`**, **`loc`**, **`synMech`**, **`synMechWeightFactor`**, **`start`**, **`interval`**, **`noise`**, **`number`**, **`weight`**, and **`delay`**. These variables are used to define the properties of a network stimulation to be added to the simulation.
+- line below basically unpacking the dict to obtain variables for **`pop`**, **`ynorm`**, **`sec`**, **`loc`**, **`synMech`**, **`synMechWeightFactor`**, **`start`**, **`interval`**, **`noise`**, **`number`**, **`weight`**, and **`delay`**. These variables are used to define the properties of a network stimulation to be added to the simulation.
 
 ### add stim source
 
