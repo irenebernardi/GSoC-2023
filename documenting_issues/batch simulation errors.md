@@ -49,7 +49,7 @@ If not working, substitute  `simulationsim.creatSimulateAnalzye` to `sim.creatSi
             synLabel=params['synMech'], secLabel=synMechSecs[i], loc=synMechLocs[i], preLoc=params['preLoc']
             IndexError: list index out of range 
 
-The correct mod compilation may fix it (see [here](https://github.com/irenebernardi/GSoC23/blob/main/documenting_issues/order%20of%20batch%20commands.md)). 
+  The correct mod compilation may fix it (see [here](https://github.com/irenebernardi/GSoC23/blob/main/documenting_issues/order%20of%20batch%20commands.md)). 
 
 
 
