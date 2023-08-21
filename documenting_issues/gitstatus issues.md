@@ -2,8 +2,8 @@
 
 **Solution:** I had accidentally created a `.git` folder in a root directory. To find it: 
 
-- 1. From /Users/ directory, I ran `find . -type d -name ".git"` 
-- 2. found wrong path (`.git` folder on root directory) and ran `rm -rf /path/to/.git`
+1. From /Users/ directory, I ran `find . -type d -name ".git"` 
+2. found wrong path (`.git` folder on root directory) and ran `rm -rf /path/to/.git`
 
 
 
