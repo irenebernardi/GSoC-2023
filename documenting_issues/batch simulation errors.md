@@ -3,11 +3,11 @@
 - before running: substitute lines in [init.py](http://init.py) w/: 
 
 
-`simConfig, netParams = sim.readCmdLineArgs(simConfigDefault='tut8_cfg.py', netParamsDefault='tut8_netParams.py')`
+      `simConfig, netParams = sim.readCmdLineArgs(simConfigDefault='tut8_cfg.py', netParamsDefault='tut8_netParams.py')`
 
-`simulationsim.createSimulateAnalyze(netParams=netParams, simConfig=simConfig)`
+      `simulationsim.createSimulateAnalyze(netParams=netParams, simConfig=simConfig)`
 
-If not working, substitute  `simulationsim.creatSimulateAnalzye` to `sim.creatSimulateAnalzye`
+  If not working, substitute  `simulationsim.creatSimulateAnalzye` to `sim.creatSimulateAnalzye`
 
 - make sure `type` is set to `mpi_bulletin` and not `mpi`:
 
